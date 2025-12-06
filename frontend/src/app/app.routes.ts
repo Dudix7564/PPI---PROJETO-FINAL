@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 
 import { Home } from './components/home/home';
 import { Login } from './components/login/login';
+import { CadastroUsuario } from './components/cadastro-usuario/cadastro-usuario';
+
 import { CadastrarItem } from './components/cadastrar-item/cadastrar-item';
 import { EditarItem } from './components/editar-item/editar-item';
 import { EntradaSaida } from './components/entrada-saida/entrada-saida';
@@ -12,6 +14,7 @@ import { PaginaRestrita } from './components/pagina-restrita/pagina-restrita';
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'login', component: Login },
+  { path: 'cadastro-usuario', component: CadastroUsuario },
 
   // Área do funcionário
   { path: 'cadastrar-item', component: CadastrarItem },
@@ -22,6 +25,6 @@ export const routes: Routes = [
   { path: 'reservar-item/:id', component: ReservarItem },
   { path: 'lista-reservas', component: ListaReservas },
 
-  // Página bloqueada
+  // Página restrita
   { path: 'pagina-restrita', component: PaginaRestrita }
 ];
