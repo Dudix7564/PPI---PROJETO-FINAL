@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,               // 👈 OBRIGATÓRIO
+  imports: [RouterOutlet],        // Permite usar <router-outlet>
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']        // 👈 corrigido (plural)
 })
 export class App {
-  protected title = 'frontend';
+  title = 'frontend';
 }

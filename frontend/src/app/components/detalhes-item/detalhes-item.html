@@ -1,0 +1,15 @@
+<div class="container mt-4" *ngIf="item"> 
+
+  <h2 class="text-center">Detalhes do Item</h2>
+
+  <div class="card p-3 mt-3">
+    <p><strong>ID:</strong> {{ item.id_item }}</p>
+    <p><strong>Nome:</strong> {{ item.nome_item }}</p>
+    <p><strong>Descrição:</strong> {{ item.descricao }}</p>
+    <p><strong>Modelo:</strong> {{ item.modelo }}</p>
+    <p><strong>Tombamento:</strong> {{ item.tombamento }}</p>
+    <p><strong>Quantidade:</strong> {{ item.quantidade }}</p>
+    <p><strong>Status:</strong> {{ item.status }}</p>
+    <p><strong>Cadastrado em:</strong> {{ item.data_cadastro }}</p>
+  </div>
+</div>

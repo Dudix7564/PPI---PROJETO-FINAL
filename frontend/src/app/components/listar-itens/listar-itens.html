@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2 class="text-center">Lista de Itens</h2>
+
+  <table class="table table-striped mt-3" *ngIf="itens.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itens" 
+          (click)="abrirDetalhes(item.id_item)"
+          style="cursor: pointer;">
+          
+        <td>{{ item.id_item }}</td>
+        <td>{{ item.nome_item }}</td>
+        <td>{{ item.quantidade }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="itens.length === 0" class="text-center mt-4">
+    <p>Nenhum item encontrado.</p>
+  </div>
+</div>
