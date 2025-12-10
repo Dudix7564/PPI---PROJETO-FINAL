@@ -10,14 +10,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of itens" 
-          (click)="abrirDetalhes(item.id_item)"
-          style="cursor: pointer;">
-          
-        <td>{{ item.id_item }}</td>
-        <td>{{ item.nome_item }}</td>
-        <td>{{ item.quantidade }}</td>
-      </tr>
+      <tr *ngFor="let item of itens" (click)="abrirDetalhes(item.id_item)" style="cursor:pointer">
+  <td>{{ item.id_item }}</td>
+  <td>{{ item.nome_item }}</td>
+  <td>{{ item.quantidade }}</td>
+</tr>
+
     </tbody>
   </table>
 

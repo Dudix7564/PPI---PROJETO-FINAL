@@ -3,18 +3,22 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require('dotenv').config();
 
-const db = require("./config/db"); // nossa conexão
+const db = require("./config/db"); // conexão correta
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// rota raiz
+// --------------------------------------------
+// 🔹 ROTA RAIZ
+// --------------------------------------------
 app.get("/", (req, res) => {
   res.send("API do Almoxarifado rodando!");
 });
 
-// rota de teste simples ao DB
+// --------------------------------------------
+// 🔹 TESTE DO BANCO DE DADOS
+// --------------------------------------------
 app.get("/test-db", (req, res) => {
   db.query("SELECT 1 + 1 AS resultado", (err, results) => {
     if (err) {
@@ -25,33 +29,40 @@ app.get("/test-db", (req, res) => {
   });
 });
 
-// rota para listar itens
+// --------------------------------------------
+// 🔹 LISTAR TODOS OS ITENS
+// --------------------------------------------
 app.get("/itens", (req, res) => {
   db.query("SELECT * FROM itens", (err, results) => {
     if (err) return res.status(500).json({ erro: err.message });
     res.json(results);
   });
 });
-// BUSCAR ITEM POR ID
+
+// --------------------------------------------
+// 🔹 BUSCAR ITEM POR ID  (CORRIGIDO)
+// --------------------------------------------
 app.get('/itens/:id', (req, res) => {
     const id = req.params.id;
 
     const sql = 'SELECT * FROM itens WHERE id_item = ?';
 
-    conexao.query(sql, [id], (err, result) => {
+    db.query(sql, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err });
         }
 
         if (result.length === 0) {
-            return res.status(404).json({ message: "Item não encontrado" });
+            return res.status(404).json({ error: "Item não encontrado" });
         }
 
-        res.json(result[0]);
+        return res.json(result[0]);
     });
 });
 
-
+// --------------------------------------------
+// 🔹 INICIAR SERVIDOR
+// --------------------------------------------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

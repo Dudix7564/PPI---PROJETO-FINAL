@@ -31,11 +31,9 @@ export class ListarItens implements OnInit {
   }
 
   // 🔥 MÉTODO PARA ABRIR DETALHES DO ITEM
-  abrirDetalhes(item: any) {
-  this.router.navigate(
-    ['/detalhes-item'],
-    { state: { item } } 
-  );
+  abrirDetalhes(id: number) {
+  console.log("clicou", id);
+  this.router.navigate(['/detalhes-item', id]);
 }
 
 }
