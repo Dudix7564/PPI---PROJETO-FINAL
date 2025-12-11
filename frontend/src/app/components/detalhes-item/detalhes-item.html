@@ -1,5 +1,4 @@
 <div class="container mt-4" *ngIf="item"> 
-
   <h2 class="text-center">Detalhes do Item</h2>
 
   <div class="card p-3 mt-3">
@@ -11,5 +10,12 @@
     <p><strong>Quantidade:</strong> {{ item.quantidade }}</p>
     <p><strong>Status:</strong> {{ item.status }}</p>
     <p><strong>Cadastrado em:</strong> {{ item.data_cadastro }}</p>
+
+    <!-- Botão Solicitar Reserva -->
+    <button 
+      class="btn btn-primary mt-3 w-100"
+      (click)="solicitarReserva()">
+      Solicitar Reserva
+    </button>
   </div>
 </div>

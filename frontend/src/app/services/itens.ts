@@ -21,6 +21,10 @@ buscarItemPorId(id: any) {
   return this.http.get(`http://localhost:3000/itens/${id}`);
 }
 
+solicitarReserva(dados: any) {
+  return this.http.post("http://localhost:3000/reservas", dados);
+}
+
 
 }
 
