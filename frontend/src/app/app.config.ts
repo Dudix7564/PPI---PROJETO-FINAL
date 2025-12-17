@@ -8,5 +8,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),   // 👈 rotas são carregadas
     provideHttpClient()
+    
   ]
 };

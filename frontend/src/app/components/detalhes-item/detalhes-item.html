@@ -12,10 +12,12 @@
     <p><strong>Cadastrado em:</strong> {{ item.data_cadastro }}</p>
 
     <!-- Botão Solicitar Reserva -->
-    <button 
-      class="btn btn-primary mt-3 w-100"
-      (click)="solicitarReserva()">
-      Solicitar Reserva
-    </button>
+    <button
+  class="btn btn-primary mt-3"
+  *ngIf="tipoUsuario !== 'funcionario'"
+  (click)="solicitarReserva()">
+  Solicitar reserva
+</button>
+
   </div>
 </div>

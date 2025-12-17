@@ -1,1 +1,56 @@
-<p>cadastro-usuario works!</p>
+<div class="container mt-5" style="max-width: 400px;">
+  <h2 class="mb-3">Cadastro de Usuário</h2>
+
+  <form (ngSubmit)="cadastrar()">
+
+    <div class="mb-3">
+      <label>Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="nome"
+        name="nome"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="senha"
+        name="senha"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Tipo de usuário</label>
+      <select
+        class="form-select"
+        [(ngModel)]="tipo"
+        name="tipo"
+      >
+        <option value="comunidade">Comunidade</option>
+        <option value="funcionario">Funcionário</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-dark w-100">
+      Cadastrar
+    </button>
+
+  </form>
+</div>

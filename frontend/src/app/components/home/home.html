@@ -1,23 +1,20 @@
-<div class="container mt-5 text-center">
+<div class="container text-center mt-5">
 
-  <h1 class="mb-4">Bem-vindo ao Almoxarifado</h1>
+  <h1 class="mb-4">Almoxarifado IFRN</h1>
 
-  <!-- Espaço para você escrever um texto -->
-  <p class="lead mb-5">
-    Aqui você pode gerenciar itens, realizar reservas e acompanhar o estoque do nosso almoxarifado.
-  </p>
+  <!-- 🔹 LISTAR ITENS (TODO MUNDO) -->
+  <button
+    class="btn btn-primary btn-lg me-3"
+    (click)="irParaListar()">
+    Listar Itens
+  </button>
 
-  <!-- Botões principais -->
-  <div class="d-flex justify-content-center gap-3">
-
-    <button class="btn btn-primary px-4" routerLink="/listar-itens">
-      Listar Itens
-    </button>
-
-    <button class="btn btn-secondary px-4" routerLink="/login">
-      Login
-    </button>
-
-  </div>
+  <!-- 🔹 CADASTRAR ITEM (SÓ FUNCIONÁRIO) -->
+  <button
+    class="btn btn-success btn-lg"
+    *ngIf="ehFuncionario()"
+    (click)="irParaCadastrar()">
+    Cadastrar Item
+  </button>
 
 </div>

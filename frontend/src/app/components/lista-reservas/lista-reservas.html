@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-primary fw-bold">
+    <i class="bi bi-calendar-check-fill me-2"></i> Gerenciamento de Reservas
+  </h2>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+      <table class="table table-hover align-middle mb-0" *ngIf="reservas.length > 0">
+        <thead class="bg-light">
+          <tr>
+            <th>#ID</th>
+            <th>Item Reservado</th>
+            <th>Solicitante</th>
+            <th class="text-center" style="width: 120px;">Status</th> <th>Data da Reserva</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let r of reservas">
+            <td class="text-muted small">{{ r.id_reserva }}</td>
+            <td class="fw-bold">{{ r.nome_item }}</td>
+            <td>{{ r.nome_usuario }}</td>
+
+            <td class="text-center">
+              <span class="badge p-2 w-100 d-block text-nowrap" [ngClass]="statusClasse(r.status)">
+                {{ r.status | uppercase }}
+              </span>
+            </td>
+
+            <td>
+              <i class="bi bi-clock me-1"></i>
+              {{ r.data_reserva | date:'dd/MM/yyyy' }}
+            </td>
+
+            <td class="text-center">
+              <button
+                class="btn btn-success btn-sm me-2 d-inline-flex align-items-center"
+                (click)="atualizarStatusReserva(r.id_reserva, 'aprovado')"
+                [disabled]="r.status === 'aprovado'"
+              >
+                <i class="bi bi-check-circle-fill me-1"></i>
+                Aprovar
+              </button>
+
+              <button
+                class="btn btn-danger btn-sm d-inline-flex align-items-center"
+                (click)="atualizarStatusReserva(r.id_reserva, 'negado')"
+                [disabled]="r.status === 'negado'"
+              >
+                <i class="bi bi-x-circle-fill me-1"></i>
+                Negar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="reservas.length === 0" class="alert alert-info text-center mt-3" role="alert">
+    <i class="bi bi-info-circle-fill me-2"></i> Nenhuma solicitação de reserva pendente foi encontrada.
+  </div>
+</div>

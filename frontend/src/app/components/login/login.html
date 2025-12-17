@@ -1,27 +1,42 @@
 <div class="container mt-5" style="max-width: 400px;">
+  <h2 class="mb-3">Login</h2>
 
-  <h2 class="text-center mb-4">Login</h2>
-
-  <div class="card p-4">
-
+  <form (ngSubmit)="fazerLogin()">
     <div class="mb-3">
-      <label>Email:</label>
-      <input type="email" [(ngModel)]="email" class="form-control">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
     </div>
 
     <div class="mb-3">
-      <label>Senha:</label>
-      <input type="password" [(ngModel)]="senha" class="form-control">
+      <label>Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="senha"
+        name="senha"
+        required
+      />
     </div>
 
-    <button class="btn btn-primary w-100" (click)="fazerLogin()">
+    <button type="submit" class="btn btn-dark w-100">
       Entrar
     </button>
 
-    <p *ngIf="erro" class="text-danger mt-3 text-center">
+    <div *ngIf="erro" class="text-danger mt-2">
       {{ erro }}
-    </p>
+    </div>
+  </form>
 
-  </div>
+  <hr />
 
+  <p>Ainda não tem conta?</p>
+  <a routerLink="/cadastro-usuario" class="btn btn-outline-dark w-100">
+    Cadastrar usuário
+  </a>
 </div>

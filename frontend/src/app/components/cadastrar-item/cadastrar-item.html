@@ -1,1 +1,58 @@
-<p>cadastrar-item works!</p>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Cadastrar Item</h2>
+
+  <form (ngSubmit)="cadastrarItem()">
+
+    <div class="mb-3">
+      <label>Nome do Item</label>
+      <input type="text" class="form-control"
+             [(ngModel)]="item.nome_item" name="nome_item">
+    </div>
+
+    <div class="mb-3">
+      <label>Descrição</label>
+      <textarea class="form-control"
+                [(ngModel)]="item.descricao" name="descricao"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Modelo</label>
+      <input type="text" class="form-control"
+             [(ngModel)]="item.modelo" name="modelo">
+    </div>
+
+    <div class="mb-3">
+      <label>Tombamento</label>
+      <input type="text" class="form-control"
+             [(ngModel)]="item.tombamento" name="tombamento">
+    </div>
+
+    <div class="mb-3">
+      <label>Quantidade</label>
+      <input type="number" class="form-control"
+             [(ngModel)]="item.quantidade" name="quantidade">
+    </div>
+
+    <div class="mb-3">
+      <label>Status</label>
+      <select class="form-select"
+              [(ngModel)]="item.status" name="status">
+        <option value="">Selecione</option>
+        <option value="disponivel">Disponível</option>
+        <option value="reservado">Reservado</option>
+        <option value="indisponivel">Indisponível</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label>Data de Cadastro</label>
+      <input type="date" class="form-control"
+             [(ngModel)]="item.data_cadastro" name="data_cadastro">
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">
+      Cadastrar Item
+    </button>
+
+  </form>
+</div>
