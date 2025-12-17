@@ -1,40 +1,42 @@
 <div class="container mt-5">
-  <h2 class="mb-4 text-center">Cadastrar Item</h2>
+  <h2 class="mb-4 text-center">
+    {{ modoEdicao ? 'Editar Item' : 'Cadastrar Item' }}
+  </h2>
 
-  <form (ngSubmit)="cadastrarItem()">
+  <form (ngSubmit)="salvarItem()">
 
     <div class="mb-3">
-      <label>Nome do Item</label>
+      <label class="fw-bold">Nome do Item</label>
       <input type="text" class="form-control"
-             [(ngModel)]="item.nome_item" name="nome_item">
+             [(ngModel)]="item.nome_item" name="nome_item" required>
     </div>
 
     <div class="mb-3">
-      <label>Descrição</label>
+      <label class="fw-bold">Descrição</label>
       <textarea class="form-control"
                 [(ngModel)]="item.descricao" name="descricao"></textarea>
     </div>
 
     <div class="mb-3">
-      <label>Modelo</label>
+      <label class="fw-bold">Modelo</label>
       <input type="text" class="form-control"
              [(ngModel)]="item.modelo" name="modelo">
     </div>
 
     <div class="mb-3">
-      <label>Tombamento</label>
+      <label class="fw-bold">Tombamento</label>
       <input type="text" class="form-control"
              [(ngModel)]="item.tombamento" name="tombamento">
     </div>
 
     <div class="mb-3">
-      <label>Quantidade</label>
+      <label class="fw-bold">Quantidade</label>
       <input type="number" class="form-control"
              [(ngModel)]="item.quantidade" name="quantidade">
     </div>
 
     <div class="mb-3">
-      <label>Status</label>
+      <label class="fw-bold">Status</label>
       <select class="form-select"
               [(ngModel)]="item.status" name="status">
         <option value="">Selecione</option>
@@ -45,13 +47,17 @@
     </div>
 
     <div class="mb-4">
-      <label>Data de Cadastro</label>
+      <label class="fw-bold">Data de Cadastro</label>
       <input type="date" class="form-control"
              [(ngModel)]="item.data_cadastro" name="data_cadastro">
     </div>
 
-    <button type="submit" class="btn btn-success w-100">
-      Cadastrar Item
+    <button type="submit" [ngClass]="modoEdicao ? 'btn btn-warning' : 'btn btn-success'" class="w-100 fw-bold">
+      {{ modoEdicao ? 'Salvar Alterações' : 'Cadastrar Item' }}
+    </button>
+
+    <button type="button" class="btn btn-outline-secondary w-100 mt-2" (click)="router.navigate(['/listar-itens'])">
+      Cancelar
     </button>
 
   </form>

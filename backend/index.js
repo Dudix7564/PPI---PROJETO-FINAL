@@ -149,7 +149,71 @@ app.post("/itens", (req, res) => {
     }
   );
 });
+/* ================================
+   ATUALIZAR ITEM (FUNCIONÁRIO) - EDIÇÃO
+================================ */
+app.put("/itens/:id", (req, res) => {
+  const id = req.params.id; // Pega o ID da URL (ex: o '1' do erro 404)
+  const {
+    nome_item,
+    descricao,
+    modelo,
+    tombamento,
+    quantidade,
+    status,
+    data_cadastro
+  } = req.body;
 
+  const sql = `
+    UPDATE itens 
+    SET nome_item = ?, 
+        descricao = ?, 
+        modelo = ?, 
+        tombamento = ?, 
+        quantidade = ?, 
+        status = ?, 
+        data_cadastro = ?
+    WHERE id_item = ?
+  `;
+
+  db.query(
+    sql,
+    [nome_item, descricao, modelo, tombamento, quantidade, status, data_cadastro, id],
+    (err, result) => {
+      if (err) {
+        console.error("❌ ERRO AO ATUALIZAR ITEM:", err);
+        return res.status(500).json({ erro: err.message });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ erro: "Item não encontrado no banco de dados" });
+      }
+
+      res.json({ mensagem: "Item atualizado com sucesso" });
+    }
+  );
+});
+/* ================================
+   EXCLUIR ITEM (FUNCIONÁRIO)
+================================ */
+app.delete("/itens/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sql = "DELETE FROM itens WHERE id_item = ?";
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("❌ ERRO AO EXCLUIR ITEM:", err);
+      return res.status(500).json({ erro: err.message });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ erro: "Item não encontrado" });
+    }
+
+    res.json({ mensagem: "Item excluído com sucesso" });
+  });
+});
 /* ================================
    SOLICITAR RESERVA (COMUNIDADE)
 ================================ */

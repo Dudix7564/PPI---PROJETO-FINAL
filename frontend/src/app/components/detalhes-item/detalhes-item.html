@@ -12,12 +12,25 @@
     <p><strong>Cadastrado em:</strong> {{ item.data_cadastro }}</p>
 
     <!-- Botão Solicitar Reserva -->
-    <button
-  class="btn btn-primary mt-3"
-  *ngIf="tipoUsuario !== 'funcionario'"
-  (click)="solicitarReserva()">
-  Solicitar reserva
-</button>
+    <div class="mt-4 d-grid gap-2">
+  <div class="mt-4 d-grid gap-2 d-md-flex justify-content-md-start">
+  <button *ngIf="tipoUsuario === 'comunidade'" class="btn btn-primary" (click)="solicitarReserva()">
+    Solicitar Reserva
+  </button>
+
+  <button *ngIf="tipoUsuario === 'funcionario'" class="btn btn-warning" (click)="irParaEdicao()">
+    Editar
+  </button>
+  
+  <button *ngIf="tipoUsuario === 'funcionario'" class="btn btn-danger" (click)="excluir(item.id_item)">
+    Excluir
+  </button>
+
+  <button class="btn btn-secondary" (click)="router.navigate(['/listar-itens'])">
+    Voltar
+  </button>
+</div>
+</div>
 
   </div>
 </div>

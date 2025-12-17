@@ -14,9 +14,7 @@ export class ItensService {
   listarItens(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-listarItemPorId(id: number) {
-  return this.http.get(`http://localhost:3000/itens/${id}`);
-}
+
 
 
 solicitarReserva(dados: any) {
@@ -26,9 +24,20 @@ solicitarReserva(dados: any) {
 cadastrarItem(item: any) {
   return this.http.post(this.apiUrl, item);
 }
+// No seu ItensService
+listarItemPorId(id: number | string): Observable<any> {
+  return this.http.get(`${this.apiUrl}/${id}`);
+}
 
-
-
+// O atualizar já está correto, mas vamos garantir o tipo do ID
+// No seu ItensService
+atualizarItem(id: any, dados: any): Observable<any> {
+  // Verifique se a URL termina com /itens/ID
+  return this.http.put(`${this.apiUrl}/${id}`, dados); 
+}
+excluirItem(id: number | string): Observable<any> {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
 
 }
 
